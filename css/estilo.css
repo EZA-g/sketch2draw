@@ -1,6 +1,7 @@
 @import url('https://googleapis.com');
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     background-color: #f5f3f3;
@@ -16,7 +17,8 @@ html, body {
     color: #faf8f8;
 }
 
-#top header, nav{
+#top header,
+nav {
     margin-left: 24px;
 }
 
@@ -46,7 +48,8 @@ html, body {
     padding: 20px;
 }
 
-#main p, h2{
+#main p,
+h2 {
     color: #faf8f8;
 }
 
@@ -60,22 +63,34 @@ html, body {
     font-weight: 100;
 }
 
+#aulas {
+    background-color: #faf8f8;
+    padding: 120px;
+}
+
+#aulas a {
+    text-decoration: none;
+    color: rgb(27, 27, 27);
+    font-size: 22px;
+    line-height: 1;
+}
+
 
 .josefin-sans-regular {
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 .share-tech-regular {
-  font-family: "Share Tech", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Share Tech", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .lexend-peta-regular {
-  font-family: "Lexend Peta", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: normal;
+    font-family: "Lexend Peta", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
 }
