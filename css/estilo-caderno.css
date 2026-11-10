@@ -1,0 +1,14 @@
+html, body{
+    background-image: linear-gradient(to bottom, rgb(110, 72, 36), rgb(197, 120, 47));
+    height: 100vh;
+    border: none;
+}
+
+#camada1{
+    background-color: rgb(245, 244, 244);
+    float: left;
+    padding-bottom: 45%;
+    padding-right: 33%;
+    position: relative;
+    /*!left: 25%;*/
+}
