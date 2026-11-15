@@ -17,24 +17,18 @@ body {
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5 0.012' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.25 0 0 0 0 0.12 0 0 0 0 0.03 1.2 0 0 0 -0.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
 
         /* emendas entre as tábuas */
-        repeating-linear-gradient(90deg,
-            rgba(35, 17, 4, 0.65) 0 3px,
-            rgba(255, 255, 255, 0.08) 3px 5px,
-            transparent 5px 190px),
 
         /* variação de tom entre tábuas */
         repeating-linear-gradient(90deg,
             rgba(255, 210, 150, 0.10) 0 190px,
-            rgba(60, 25, 5, 0.12) 190px 380px,
-            rgba(255, 190, 120, 0.05) 380px 570px);
+            rgba(60, 25, 5, 0.12) 220px 350px,
+            rgba(255, 190, 120, 0.05) 410px 600px);
 }
 
 /* ===== FOLHA DE PAPEL ===== */
 .folha {
-    position: relative;
+    position: fixed;
     float: left;
-    left: 34vw;
-    top: -2vh;
     box-sizing: border-box;
     max-width: 820px;
     margin: 40px auto;
@@ -50,7 +44,6 @@ body {
         0 1px 1px rgba(0, 0, 0, 0.25),
         0 8px 16px rgba(0, 0, 0, 0.30),
         0 24px 48px rgba(0, 0, 0, 0.30);
-    /*transform: rotate(-0.4deg);*/
 }
 
 /* garante texto escuro dentro da folha (o estilo.css deixava o texto branco) */
@@ -60,17 +53,37 @@ body {
 .folha p,
 .folha a {
     color: #2b2b2b;
+    position: relative;
+    bottom: 7px;
+    right: 10px;
+    line-height: 0.3;
 }
 
-.folha p {
-    font-size: 20px;
-    line-height: 1.6;
-    font-weight: 400;
+.folha p,
+.folha a {
+    top: 15px;
+    font-size: 27px;
+    font-weight: 500;
+}
+
+.folha h1 {
+    font-size: 36px;
+    font-weight: 700;
 }
 
 .folha h2 {
-    font-size: 36px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.folha a {
+    text-decoration: none;
+    color: #e41212;
+}
+
+.folha a:hover {
+    text-decoration: none;
+    color: #1243e4;
 }
 
 /* ===== VARIAÇÃO: FOLHA PAUTADA (opcional, adicione class="folha pautada") ===== */
@@ -88,10 +101,42 @@ body {
     margin: 0 0 32px;
 }
 
-/* ===== CELULAR ===== */
-@media (max-width: 700px) {
-    .folha {
-        margin: 16px;
-        padding: 32px 24px;
-    }
+/*===== MARCADORES =====*/
+.marcadores {
+    position: fixed;
+    float: left;
+    box-sizing: border-box;
+    width: 10vw;
+    height: 5vh;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    font-size: 36px;
+    font-family: "Zeyada", cursive;
+    color: #1d1d1d;
+}
+
+.marcadores.verde {
+    background-color: #20ce46;
+}
+
+.marcadores.azul {
+    background-color: #2057ce;
+}
+
+.marcadores.laranja {
+    background-color: #e26f11;
+}
+
+.marcadores.rosa {
+    background-color: #d518db;
+}
+
+/* ===== FONTES ===== */
+@import url('https://googleapis.com');
+
+.zeyada-regular {
+    font-family: "Zeyada", cursive;
+    font-weight: 400;
+    font-style: normal;
 }
