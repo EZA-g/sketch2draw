@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aulas - Sketch2Draw</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/estilo-mesa.css"> <!-- mesa de madeira (body) -->
+    <link rel="stylesheet" href="/css/estilo-livro.css"> <!-- caderno + virada de página -->
+</head>
+
+<body>
+    <nav class="marcadores">
+        <a href="/html/index.html" class="marcador">Voltar</a>
+        <a href="../aulas/aula1.html" class="marcador">Aula 1</a>
+        <a href="../aulas/aula2.html" class="marcador">Aula 2</a>
+        <a href="../aulas/aula3.html" class="marcador">Aula 3</a>
+        <a href="../aulas/aula4.html" class="marcador">Aula 4</a>
+        <a href="../aulas/aula5.html" class="marcador">Aula 5</a>
+        <a href="../aulas/aula6.html" class="marcador">Aula 6</a>
+        <a href="/html/exibicao.html" class="marcador">exibição</a>
+    </nav>
+
+    <!-- O CADERNO (não precisa editar) -->
+    <main class="caderno" id="caderno">
+        <div class="pagina pagina-esq base base-esq">
+            <div class="conteudo" id="conteudo-esq"></div>
+        </div>
+        <div class="pagina pagina-dir base base-dir">
+            <div class="conteudo" id="conteudo-dir"></div>
+        </div>
+
+        <div class="folha-virando" id="folha" aria-hidden="true">
+            <div class="face frente pagina">
+                <div class="conteudo"></div>
+            </div>
+            <div class="face verso pagina">
+                <div class="conteudo"></div>
+            </div>
+        </div>
+
+        <button class="dobra dobra-esq" id="dobra-esq" type="button" aria-label="Página anterior"></button>
+        <button class="dobra dobra-dir" id="dobra-dir" type="button" aria-label="Próxima página"></button>
+    </main>
+
+    <!-- CONTEÚDO: cada <section class="spread"> é um par de folhas.
+         esquerda = texto, direita = imagens -->
+    <div id="fonte-spreads" hidden>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h1>Aula 2: Aprendendo a enxergar formas</h1>
+                <h2>Introdução</h2>
+                <p>Uma das habilidades mais importantes para quem está aprendendo a desenhar é conseguir enxergar formas
+                    simples dentro de objetos aparentemente complexos.<br><br>
+
+                    Uma maçã pode começar como um círculo, um livro como um retângulo e uma garrafa como uma combinação
+                    de cilindros.<br><br>
+
+                    Nesta aula, você aprenderá a observar objetos do cotidiano e identificar as estruturas que podem
+                    facilitar sua representação no papel.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure>
+                    <img src="/img/a2e0.jfif" alt="Raposa">
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 1: Identificando formas geométricas</h2>
+                <p>Observe um objeto próximo de você, como uma maçã, um livro ou uma caneca.<br><br>
+
+                    Antes de tentar reproduzir seus detalhes, identifique qual forma geométrica mais se aproxima de sua
+                    estrutura principal.<br><br>
+
+                    Faça pequenos desenhos dessas formas separadamente. Por enquanto, ignore texturas, sombras e
+                    detalhes decorativos.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a2e1.jfif" alt="O objeto como forma">
+                    <figcaption>O objeto como forma</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 2: Dividindo objetos em partes</h2>
+                <p>Agora, escolha um objeto um pouco mais elaborado, como uma luminária.<br><br>
+
+                    Observe quais partes podem ser representadas por círculos, retângulos, triângulos ou outras formas
+                    básicas.<br><br>
+
+                    Comece pela maior estrutura e acrescente as menores, sempre utilizando traços leves. Não é
+                    necessário conectar todas as partes perfeitamente neste momento.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a2e2.jfif" alt="Entendendo a estrutura">
+                    <figcaption>Entendendo a estrutura</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 3: Reconhecendo a estrutura antes dos detalhes</h2>
+                <p>Observe novamente o objeto escolhido e compare seu esboço com a referência.<br><br>
+
+                    Verifique se as formas principais estão posicionadas corretamente. A base está muito grande? A parte
+                    superior está estreita demais?<br><br>
+
+                    Faça pequenos ajustes, mas mantenha o desenho simples. Nesta aula, queremos treinar a observação,
+                    não produzir uma ilustração finalizada.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a2e3.jfif" alt="Reconhecendo a estrutura">
+                    <figcaption>Reconhecendo a estrutura</figcaption>
+                </figure>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="/java/livro.js"></script>
+</body>
+
+</html>

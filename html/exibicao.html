@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibição - Sketch2Draw</title>
+    <link rel="stylesheet" href="../css/estilo-exibicao.css">
+</head>
+<body>
+    <a href="index.html" class="seta-voltar">Voltar</a>
+
+    <main class="parede">
+        <header class="cabecalho">
+            <h1>Exibição</h1>
+            <p>Envie seu desenho e ele será exposto na parede da galeria.</p>
+        </header>
+
+        <!-- placa de museu com o formulário de upload -->
+        <form id="form-upload" class="placa">
+            <label class="botao-arquivo">
+                Escolher arte
+                <input type="file" id="arquivo" accept="image/*" required>
+            </label>
+            <span id="nome-arquivo" class="nome-arquivo">nenhum arquivo</span>
+
+            <input type="text" id="titulo" placeholder="Título da obra" maxlength="60">
+            <input type="text" id="autor" placeholder="Seu nome" maxlength="40">
+
+            <select id="moldura" aria-label="Cor da moldura">
+                <option value="branca">Moldura branca</option>
+                <option value="preta">Moldura preta</option>
+                <option value="madeira">Moldura de madeira</option>
+            </select>
+
+            <button type="submit">Expor na parede</button>
+            <p id="aviso" class="aviso" role="status"></p>
+        </form>
+
+        <section id="galeria" class="galeria" aria-label="Galeria de artes"></section>
+        <p id="vazio" class="vazio">A parede está vazia. Envie sua primeira arte!</p>
+    </main>
+
+    <div class="piso" aria-hidden="true"></div>
+
+    <!-- visualização ampliada -->
+    <dialog id="visualizacao" class="visualizacao">
+        <figure>
+            <img id="visualizacao-img" alt="">
+            <figcaption id="visualizacao-legenda"></figcaption>
+        </figure>
+        <div class="visualizacao-botoes">
+            <button type="button" id="remover" class="perigo">Remover da parede</button>
+            <button type="button" id="fechar">Fechar</button>
+        </div>
+    </dialog>
+
+    <script src="../java/exibicao.js"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+
+:root {
+    --madeira-escura: #4a2a12;
+    --madeira-media: #7b4a22;
+    --papel: #fdfcf8;
+    --altura-fileira: 240px;
+    --fonte-texto: "Caveat", "Segoe Print", "Comic Sans MS", cursive;
+    --ruido-madeira: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5 0.012' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.15 0 0 0 0 0.07 0 0 0 0 0.02 1.2 0 0 0 -0.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* fundo da estante: painel de madeira escura com vinheta */
+body {
+    background-color: var(--madeira-escura);
+    background-image:
+        radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(0, 0, 0, 0.6) 100%),
+        var(--ruido-madeira),
+        repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0 3px, transparent 3px 220px);
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.estante {
+    width: min(1100px, 96%);
+    margin: 0 auto;
+    padding: 24px 0;
+    /* laterais da estante */
+    border-left: 18px solid #3a200d;
+    border-right: 18px solid #3a200d;
+    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.7);
+}
+
+/* ===== PRATELEIRAS ===== */
+.prateleira {
+    position: relative;
+    padding-top: 14px;
+}
+
+/* a tábua em que os livros se apoiam */
+.prateleira::after {
+    content: "";
+    display: block;
+    height: 24px;
+    background-color: var(--madeira-media);
+    background-image:
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.25), transparent 30%, rgba(0, 0, 0, 0.35)),
+        var(--ruido-madeira);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== FILEIRAS DECORATIVAS (dezenas de livros só com gradientes) ===== */
+.fileira {
+    position: relative;
+    height: var(--altura-fileira);
+    filter: brightness(0.55) saturate(0.8);   /* escurece para focar na prateleira central */
+}
+
+.fileira::after {          /* sombra de profundidade em cima e embaixo */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 35%, transparent 75%, rgba(0, 0, 0, 0.5));
+    pointer-events: none;
+}
+
+/* ===== PRATELEIRA CENTRAL (foco da página) ===== */
+.prateleira.central {
+    z-index: 2;
+    margin: 6px 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(255, 214, 140, 0.30), transparent 70%);   /* luz sobre a prateleira */
+}
+
+.fileira-central {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;   /* livros começam no canto esquerdo */
+    gap: 3px;
+    height: calc(var(--altura-fileira) + 30px);
+    padding: 0 20px;
+}
+
+/* ===== LIVRO (cada link/conteúdo) ===== */
+.livro {
+    --cor: #7a1f1f;
+    --larg: 64px;
+    --alt: 92%;
+    position: relative;
+    box-sizing: border-box;
+    width: var(--larg);
+    height: var(--alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 4px;
+    color: #fdfcf8;
+    text-decoration: none;
+    font-size: 17px;
+    letter-spacing: 1px;
+    background-color: var(--cor);
+    background-image:
+        /* arredondado da lombada */
+        linear-gradient(90deg, rgba(0, 0, 0, 0.45), rgba(255, 255, 255, 0.18) 20%, transparent 45%, rgba(0, 0, 0, 0.35)),
+        /* faixas douradas */
+        linear-gradient(to bottom,
+            transparent 0 14px, #d9b45a 14px 17px, transparent 17px,
+            transparent calc(100% - 17px), #d9b45a calc(100% - 17px) calc(100% - 14px), transparent calc(100% - 14px));
+    border-radius: 3px 3px 0 0;
+    box-shadow: inset 2px 0 0 rgba(255, 255, 255, 0.12), 3px 0 6px rgba(0, 0, 0, 0.5);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* texto vertical na lombada */
+.livro span {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+}
+
+/* páginas aparecendo no topo quando o livro é puxado (o "papel") */
+.livro::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    right: 3px;
+    top: -6px;
+    height: 6px;
+    background: repeating-linear-gradient(to bottom, var(--papel) 0 1px, #e4dcc8 1px 2px);
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.livro:hover,
+.livro:focus-visible {
+    transform: translateY(-18px);
+    box-shadow: inset 2px 0 0 rgba(255, 255, 255, 0.12), 6px 0 14px rgba(0, 0, 0, 0.6);
+    outline: none;
+}
+
+.livro:hover::before,
+.livro:focus-visible::before {
+    opacity: 1;
+}
+
+/* variações de cor/tamanho */
+.livro.vermelho { --cor: #8a2323; --larg: 62px; --alt: 94%; }
+.livro.azul     { --cor: #1f4a7a; --larg: 56px; --alt: 86%; }
+.livro.verde    { --cor: #2f6a3f; --larg: 70px; --alt: 90%; }
+.livro.marrom   { --cor: #6a4524; --larg: 58px; --alt: 95%; }
+.livro.roxo     { --cor: #4a2d68; --larg: 66px; --alt: 96%; }
+.livro.laranja  { --cor: #b8601a; --larg: 60px; --alt: 88%; }
+
+/* ===== PRATELEIRA MISTA: livros clicáveis à esquerda + decorativos preenchendo o resto ===== */
+.fileira-mista {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 3px;
+    height: calc(var(--altura-fileira) + 30px);
+    padding-left: 20px;
+}
+
+.fileira-mista .livro {
+    flex: none;
+}
+
+.fileira-mista .fileira {
+    flex: 1;                 /* ocupa o espaço que sobra à direita dos livros clicáveis */
+    min-width: 0;
+    align-self: flex-end;
+}
+
+/* ===== TÍTULO / CABEÇALHO ===== */
+.estante-titulo {
+    text-align: center;
+    color: #f3dfb6;
+    font-family: var(--fonte-texto);
+    margin: 0 0 12px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* ===== FILEIRAS GERADAS (cada livro é uma faixa de gradiente) ===== */
+.fileira-a{
+  background-image:
+    linear-gradient(90deg,transparent 0px 24px,transparent 24px 45px,transparent 45px 77px,transparent 77px 96px,transparent 96px 128px,#1a0d04 128px 130px,#4a5d23 130px 150px,#1a0d04 150px 152px,transparent 152px 184px,transparent 184px 218px,#1a0d04 218px 220px,#2b2b2b 220px 237px,#1a0d04 237px 239px,transparent 239px 260px,transparent 260px 277px,#1a0d04 277px 279px,#8c3b1a 279px 294px,#1a0d04 294px 296px,#1a0d04 296px 298px,#8a6a1f 298px 329px,#1a0d04 329px 331px,transparent 331px 348px,transparent 348px 384px,transparent 384px 414px,transparent 414px 449px,#1a0d04 449px 451px,#7a1f1f 451px 475px,#1a0d04 475px 477px,transparent 477px 498px,transparent 498px 523px,transparent 523px 549px,transparent 549px 578px,transparent 578px 612px,#1a0d04 612px 614px,#3b2a4f 614px 645px,#1a0d04 645px 647px,transparent 647px 664px,transparent 664px 686px,transparent 686px 713px,#1a0d04 713px 715px,#4a5d23 715px 746px,#1a0d04 746px 748px,transparent 748px 771px,transparent 771px 806px,#1a0d04 806px 808px,#244b4b 808px 824px,#1a0d04 824px 826px,#1a0d04 826px 828px,#3b2a4f 828px 856px,#1a0d04 856px 858px,transparent 858px 877px,transparent 877px 894px,#1a0d04 894px 896px,#7a1f1f 896px 922px,#1a0d04 922px 924px,transparent 924px 960px,transparent 960px 978px,transparent 978px 1013px,transparent 1013px 1038px,transparent 1038px 1056px,#1a0d04 1056px 1058px,#c9b48a 1058px 1073px,#1a0d04 1073px 1075px,#1a0d04 1075px 1077px,#5a3b1e 1077px 1107px,#1a0d04 1107px 1109px,transparent 1109px 1139px,#1a0d04 1139px 1141px,#4a5d23 1141px 1162px,#1a0d04 1162px 1164px,transparent 1164px 1182px,#1a0d04 1182px 1184px,#35507a 1184px 1208px,#1a0d04 1208px 1210px,transparent 1210px 1239px,transparent 1239px 1272px,transparent 1272px 1308px,transparent 1308px 1328px,transparent 1328px 1361px,transparent 1361px 1385px,transparent 1385px 1410px,transparent 1410px 1444px,transparent 1444px 1474px,transparent 1474px 1491px,transparent 1491px 1526px,transparent 1526px 1544px,transparent 1544px 1571px,transparent 1571px 1599px,transparent 1599px 1624px,transparent 1624px 1641px,transparent 1641px 1658px,transparent 1658px 1689px,transparent 1689px 1725px,#1a0d04 1725px 1727px,#3b2a4f 1727px 1751px,#1a0d04 1751px 1753px,transparent 1753px 1781px,transparent 1781px 1807px,transparent 1807px 1824px,transparent 1824px 1845px),
+    linear-gradient(90deg,transparent 0px 24px,#1a0d04 24px 26px,#c9b48a 26px 43px,#1a0d04 43px 45px,transparent 45px 77px,transparent 77px 96px,#1a0d04 96px 98px,#6b2d3c 98px 126px,#1a0d04 126px 128px,transparent 128px 152px,transparent 152px 184px,#1a0d04 184px 186px,#a0522d 186px 216px,#1a0d04 216px 218px,transparent 218px 239px,transparent 239px 260px,transparent 260px 277px,transparent 277px 296px,transparent 296px 331px,#1a0d04 331px 333px,#244b4b 333px 346px,#1a0d04 346px 348px,transparent 348px 384px,#1a0d04 384px 386px,#4a5d23 386px 412px,#1a0d04 412px 414px,#1a0d04 414px 416px,#2f5d3a 416px 447px,#1a0d04 447px 449px,transparent 449px 477px,#1a0d04 477px 479px,#5a3b1e 479px 496px,#1a0d04 496px 498px,transparent 498px 523px,#1a0d04 523px 525px,#6b2d3c 525px 547px,#1a0d04 547px 549px,transparent 549px 578px,transparent 578px 612px,transparent 612px 647px,#1a0d04 647px 649px,#c9b48a 649px 662px,#1a0d04 662px 664px,transparent 664px 686px,transparent 686px 713px,transparent 713px 748px,transparent 748px 771px,#1a0d04 771px 773px,#8a6a1f 773px 804px,#1a0d04 804px 806px,transparent 806px 826px,transparent 826px 858px,#1a0d04 858px 860px,#2f5d3a 860px 875px,#1a0d04 875px 877px,#1a0d04 877px 879px,#a0522d 879px 892px,#1a0d04 892px 894px,transparent 894px 924px,transparent 924px 960px,#1a0d04 960px 962px,#4a5d23 962px 976px,#1a0d04 976px 978px,#1a0d04 978px 980px,#6b2d3c 980px 1011px,#1a0d04 1011px 1013px,transparent 1013px 1038px,#1a0d04 1038px 1040px,#7a1f1f 1040px 1054px,#1a0d04 1054px 1056px,transparent 1056px 1075px,transparent 1075px 1109px,#1a0d04 1109px 1111px,#c9b48a 1111px 1137px,#1a0d04 1137px 1139px,transparent 1139px 1164px,#1a0d04 1164px 1166px,#3b2a4f 1166px 1180px,#1a0d04 1180px 1182px,transparent 1182px 1210px,#1a0d04 1210px 1212px,#244b4b 1212px 1237px,#1a0d04 1237px 1239px,#1a0d04 1239px 1241px,#2b2b2b 1241px 1270px,#1a0d04 1270px 1272px,transparent 1272px 1308px,transparent 1308px 1328px,#1a0d04 1328px 1330px,#a0522d 1330px 1359px,#1a0d04 1359px 1361px,#1a0d04 1361px 1363px,#a0522d 1363px 1383px,#1a0d04 1383px 1385px,transparent 1385px 1410px,#1a0d04 1410px 1412px,#7a1f1f 1412px 1442px,#1a0d04 1442px 1444px,transparent 1444px 1474px,#1a0d04 1474px 1476px,#c9b48a 1476px 1489px,#1a0d04 1489px 1491px,transparent 1491px 1526px,transparent 1526px 1544px,#1a0d04 1544px 1546px,#3b2a4f 1546px 1569px,#1a0d04 1569px 1571px,transparent 1571px 1599px,transparent 1599px 1624px,transparent 1624px 1641px,#1a0d04 1641px 1643px,#8a6a1f 1643px 1656px,#1a0d04 1656px 1658px,#1a0d04 1658px 1660px,#c9b48a 1660px 1687px,#1a0d04 1687px 1689px,#1a0d04 1689px 1691px,#2f5d3a 1691px 1723px,#1a0d04 1723px 1725px,transparent 1725px 1753px,transparent 1753px 1781px,#1a0d04 1781px 1783px,#1f3d5c 1783px 1805px,#1a0d04 1805px 1807px,transparent 1807px 1824px,#1a0d04 1824px 1826px,#6b2d3c 1826px 1843px,#1a0d04 1843px 1845px),
+    linear-gradient(90deg,#1a0d04 0px 2px,#6b2d3c 2px 22px,#1a0d04 22px 24px,transparent 24px 45px,#1a0d04 45px 47px,#c9b48a 47px 75px,#1a0d04 75px 77px,#1a0d04 77px 79px,#7a1f1f 79px 94px,#1a0d04 94px 96px,transparent 96px 128px,transparent 128px 152px,#1a0d04 152px 154px,#35507a 154px 182px,#1a0d04 182px 184px,transparent 184px 218px,transparent 218px 239px,#1a0d04 239px 241px,#a0522d 241px 258px,#1a0d04 258px 260px,#1a0d04 260px 262px,#8c3b1a 262px 275px,#1a0d04 275px 277px,transparent 277px 296px,transparent 296px 331px,transparent 331px 348px,#1a0d04 348px 350px,#a0522d 350px 382px,#1a0d04 382px 384px,transparent 384px 414px,transparent 414px 449px,transparent 449px 477px,transparent 477px 498px,#1a0d04 498px 500px,#a0522d 500px 521px,#1a0d04 521px 523px,transparent 523px 549px,#1a0d04 549px 551px,#3b2a4f 551px 576px,#1a0d04 576px 578px,#1a0d04 578px 580px,#a0522d 580px 610px,#1a0d04 610px 612px,transparent 612px 647px,transparent 647px 664px,#1a0d04 664px 666px,#35507a 666px 684px,#1a0d04 684px 686px,#1a0d04 686px 688px,#c9b48a 688px 711px,#1a0d04 711px 713px,transparent 713px 748px,#1a0d04 748px 750px,#35507a 750px 769px,#1a0d04 769px 771px,transparent 771px 806px,transparent 806px 826px,transparent 826px 858px,transparent 858px 877px,transparent 877px 894px,transparent 894px 924px,#1a0d04 924px 926px,#8c3b1a 926px 958px,#1a0d04 958px 960px,transparent 960px 978px,transparent 978px 1013px,#1a0d04 1013px 1015px,#5a3b1e 1015px 1036px,#1a0d04 1036px 1038px,transparent 1038px 1056px,transparent 1056px 1075px,transparent 1075px 1109px,transparent 1109px 1139px,transparent 1139px 1164px,transparent 1164px 1182px,transparent 1182px 1210px,transparent 1210px 1239px,transparent 1239px 1272px,#1a0d04 1272px 1274px,#6b2d3c 1274px 1306px,#1a0d04 1306px 1308px,#1a0d04 1308px 1310px,#8c3b1a 1310px 1326px,#1a0d04 1326px 1328px,transparent 1328px 1361px,transparent 1361px 1385px,#1a0d04 1385px 1387px,#8a6a1f 1387px 1408px,#1a0d04 1408px 1410px,transparent 1410px 1444px,#1a0d04 1444px 1446px,#3b2a4f 1446px 1472px,#1a0d04 1472px 1474px,transparent 1474px 1491px,#1a0d04 1491px 1493px,#2f5d3a 1493px 1524px,#1a0d04 1524px 1526px,#1a0d04 1526px 1528px,#2b2b2b 1528px 1542px,#1a0d04 1542px 1544px,transparent 1544px 1571px,#1a0d04 1571px 1573px,#4a5d23 1573px 1597px,#1a0d04 1597px 1599px,#1a0d04 1599px 1601px,#244b4b 1601px 1622px,#1a0d04 1622px 1624px,#1a0d04 1624px 1626px,#7a1f1f 1626px 1639px,#1a0d04 1639px 1641px,transparent 1641px 1658px,transparent 1658px 1689px,transparent 1689px 1725px,transparent 1725px 1753px,#1a0d04 1753px 1755px,#8a6a1f 1755px 1779px,#1a0d04 1779px 1781px,transparent 1781px 1807px,#1a0d04 1807px 1809px,#2b2b2b 1809px 1822px,#1a0d04 1822px 1824px,transparent 1824px 1845px);
+  background-size: 1845px 94%, 1845px 80%, 1845px 66%;
+  background-position: left bottom;
+  background-repeat: repeat-x;
+}
+
+.fileira-b{
+  background-image:
+    linear-gradient(90deg,transparent 0px 31px,transparent 31px 62px,#1a0d04 62px 64px,#2f5d3a 64px 95px,#1a0d04 95px 97px,transparent 97px 130px,#1a0d04 130px 132px,#1f3d5c 132px 164px,#1a0d04 164px 166px,transparent 166px 197px,transparent 197px 216px,transparent 216px 234px,transparent 234px 265px,transparent 265px 301px,#1a0d04 301px 303px,#35507a 303px 335px,#1a0d04 335px 337px,#1a0d04 337px 339px,#7a1f1f 339px 368px,#1a0d04 368px 370px,#1a0d04 370px 372px,#5a3b1e 372px 386px,#1a0d04 386px 388px,#1a0d04 388px 390px,#8c3b1a 390px 422px,#1a0d04 422px 424px,transparent 424px 455px,#1a0d04 455px 457px,#6b2d3c 457px 488px,#1a0d04 488px 490px,transparent 490px 514px,#1a0d04 514px 516px,#2b2b2b 516px 544px,#1a0d04 544px 546px,transparent 546px 565px,transparent 565px 590px,transparent 590px 609px,#1a0d04 609px 611px,#6b2d3c 611px 634px,#1a0d04 634px 636px,#1a0d04 636px 638px,#1f3d5c 638px 660px,#1a0d04 660px 662px,#1a0d04 662px 664px,#a0522d 664px 695px,#1a0d04 695px 697px,transparent 697px 717px,#1a0d04 717px 719px,#35507a 719px 734px,#1a0d04 734px 736px,#1a0d04 736px 738px,#5a3b1e 738px 751px,#1a0d04 751px 753px,transparent 753px 771px,transparent 771px 800px,transparent 800px 835px,transparent 835px 860px,transparent 860px 886px,#1a0d04 886px 888px,#2f5d3a 888px 914px,#1a0d04 914px 916px,transparent 916px 940px,#1a0d04 940px 942px,#244b4b 942px 955px,#1a0d04 955px 957px,#1a0d04 957px 959px,#2b2b2b 959px 987px,#1a0d04 987px 989px,#1a0d04 989px 991px,#244b4b 991px 1021px,#1a0d04 1021px 1023px,#1a0d04 1023px 1025px,#4a5d23 1025px 1054px,#1a0d04 1054px 1056px,transparent 1056px 1077px,#1a0d04 1077px 1079px,#a0522d 1079px 1104px,#1a0d04 1104px 1106px,#1a0d04 1106px 1108px,#7a1f1f 1108px 1134px,#1a0d04 1134px 1136px,transparent 1136px 1161px,#1a0d04 1161px 1163px,#2f5d3a 1163px 1176px,#1a0d04 1176px 1178px,transparent 1178px 1207px,#1a0d04 1207px 1209px,#7a1f1f 1209px 1240px,#1a0d04 1240px 1242px,#1a0d04 1242px 1244px,#244b4b 1244px 1261px,#1a0d04 1261px 1263px,#1a0d04 1263px 1265px,#8c3b1a 1265px 1286px,#1a0d04 1286px 1288px,transparent 1288px 1324px,transparent 1324px 1350px,#1a0d04 1350px 1352px,#5a3b1e 1352px 1367px,#1a0d04 1367px 1369px,transparent 1369px 1404px,transparent 1404px 1421px,transparent 1421px 1449px,transparent 1449px 1470px,#1a0d04 1470px 1472px,#35507a 1472px 1503px,#1a0d04 1503px 1505px,#1a0d04 1505px 1507px,#2b2b2b 1507px 1532px,#1a0d04 1532px 1534px,transparent 1534px 1555px,#1a0d04 1555px 1557px,#4a5d23 1557px 1589px,#1a0d04 1589px 1591px,#1a0d04 1591px 1593px,#4a5d23 1593px 1612px,#1a0d04 1612px 1614px,#1a0d04 1614px 1616px,#2b2b2b 1616px 1646px,#1a0d04 1646px 1648px,transparent 1648px 1677px,transparent 1677px 1696px,#1a0d04 1696px 1698px,#7a1f1f 1698px 1714px,#1a0d04 1714px 1716px,transparent 1716px 1749px,transparent 1749px 1778px,transparent 1778px 1814px,#1a0d04 1814px 1816px,#4a5d23 1816px 1845px,#1a0d04 1845px 1847px,#1a0d04 1847px 1849px,#5a3b1e 1849px 1864px,#1a0d04 1864px 1866px,transparent 1866px 1898px,transparent 1898px 1934px),
+    linear-gradient(90deg,transparent 0px 31px,#1a0d04 31px 33px,#6b2d3c 33px 60px,#1a0d04 60px 62px,transparent 62px 97px,#1a0d04 97px 99px,#2b2b2b 99px 128px,#1a0d04 128px 130px,transparent 130px 166px,#1a0d04 166px 168px,#2f5d3a 168px 195px,#1a0d04 195px 197px,transparent 197px 216px,transparent 216px 234px,transparent 234px 265px,transparent 265px 301px,transparent 301px 337px,transparent 337px 370px,transparent 370px 388px,transparent 388px 424px,#1a0d04 424px 426px,#244b4b 426px 453px,#1a0d04 453px 455px,transparent 455px 490px,transparent 490px 514px,transparent 514px 546px,#1a0d04 546px 548px,#2b2b2b 548px 563px,#1a0d04 563px 565px,#1a0d04 565px 567px,#6b2d3c 567px 588px,#1a0d04 588px 590px,transparent 590px 609px,transparent 609px 636px,transparent 636px 662px,transparent 662px 697px,#1a0d04 697px 699px,#a0522d 699px 715px,#1a0d04 715px 717px,transparent 717px 736px,transparent 736px 753px,#1a0d04 753px 755px,#a0522d 755px 769px,#1a0d04 769px 771px,#1a0d04 771px 773px,#1f3d5c 773px 798px,#1a0d04 798px 800px,transparent 800px 835px,#1a0d04 835px 837px,#1f3d5c 837px 858px,#1a0d04 858px 860px,#1a0d04 860px 862px,#7a1f1f 862px 884px,#1a0d04 884px 886px,transparent 886px 916px,transparent 916px 940px,transparent 940px 957px,transparent 957px 989px,transparent 989px 1023px,transparent 1023px 1056px,#1a0d04 1056px 1058px,#2b2b2b 1058px 1075px,#1a0d04 1075px 1077px,transparent 1077px 1106px,transparent 1106px 1136px,transparent 1136px 1161px,transparent 1161px 1178px,transparent 1178px 1207px,transparent 1207px 1242px,transparent 1242px 1263px,transparent 1263px 1288px,#1a0d04 1288px 1290px,#35507a 1290px 1322px,#1a0d04 1322px 1324px,#1a0d04 1324px 1326px,#1f3d5c 1326px 1348px,#1a0d04 1348px 1350px,transparent 1350px 1369px,transparent 1369px 1404px,transparent 1404px 1421px,transparent 1421px 1449px,transparent 1449px 1470px,transparent 1470px 1505px,transparent 1505px 1534px,#1a0d04 1534px 1536px,#5a3b1e 1536px 1553px,#1a0d04 1553px 1555px,transparent 1555px 1591px,transparent 1591px 1614px,transparent 1614px 1648px,#1a0d04 1648px 1650px,#c9b48a 1650px 1675px,#1a0d04 1675px 1677px,#1a0d04 1677px 1679px,#7a1f1f 1679px 1694px,#1a0d04 1694px 1696px,transparent 1696px 1716px,#1a0d04 1716px 1718px,#5a3b1e 1718px 1747px,#1a0d04 1747px 1749px,#1a0d04 1749px 1751px,#a0522d 1751px 1776px,#1a0d04 1776px 1778px,#1a0d04 1778px 1780px,#8a6a1f 1780px 1812px,#1a0d04 1812px 1814px,transparent 1814px 1847px,transparent 1847px 1866px,transparent 1866px 1898px,transparent 1898px 1934px),
+    linear-gradient(90deg,#1a0d04 0px 2px,#35507a 2px 29px,#1a0d04 29px 31px,transparent 31px 62px,transparent 62px 97px,transparent 97px 130px,transparent 130px 166px,transparent 166px 197px,#1a0d04 197px 199px,#8c3b1a 199px 214px,#1a0d04 214px 216px,#1a0d04 216px 218px,#a0522d 218px 232px,#1a0d04 232px 234px,#1a0d04 234px 236px,#4a5d23 236px 263px,#1a0d04 263px 265px,#1a0d04 265px 267px,#2f5d3a 267px 299px,#1a0d04 299px 301px,transparent 301px 337px,transparent 337px 370px,transparent 370px 388px,transparent 388px 424px,transparent 424px 455px,transparent 455px 490px,#1a0d04 490px 492px,#8a6a1f 492px 512px,#1a0d04 512px 514px,transparent 514px 546px,transparent 546px 565px,transparent 565px 590px,#1a0d04 590px 592px,#8a6a1f 592px 607px,#1a0d04 607px 609px,transparent 609px 636px,transparent 636px 662px,transparent 662px 697px,transparent 697px 717px,transparent 717px 736px,transparent 736px 753px,transparent 753px 771px,transparent 771px 800px,#1a0d04 800px 802px,#5a3b1e 802px 833px,#1a0d04 833px 835px,transparent 835px 860px,transparent 860px 886px,transparent 886px 916px,#1a0d04 916px 918px,#1f3d5c 918px 938px,#1a0d04 938px 940px,transparent 940px 957px,transparent 957px 989px,transparent 989px 1023px,transparent 1023px 1056px,transparent 1056px 1077px,transparent 1077px 1106px,transparent 1106px 1136px,#1a0d04 1136px 1138px,#8a6a1f 1138px 1159px,#1a0d04 1159px 1161px,transparent 1161px 1178px,#1a0d04 1178px 1180px,#2b2b2b 1180px 1205px,#1a0d04 1205px 1207px,transparent 1207px 1242px,transparent 1242px 1263px,transparent 1263px 1288px,transparent 1288px 1324px,transparent 1324px 1350px,transparent 1350px 1369px,#1a0d04 1369px 1371px,#5a3b1e 1371px 1402px,#1a0d04 1402px 1404px,#1a0d04 1404px 1406px,#3b2a4f 1406px 1419px,#1a0d04 1419px 1421px,#1a0d04 1421px 1423px,#244b4b 1423px 1447px,#1a0d04 1447px 1449px,#1a0d04 1449px 1451px,#244b4b 1451px 1468px,#1a0d04 1468px 1470px,transparent 1470px 1505px,transparent 1505px 1534px,transparent 1534px 1555px,transparent 1555px 1591px,transparent 1591px 1614px,transparent 1614px 1648px,transparent 1648px 1677px,transparent 1677px 1696px,transparent 1696px 1716px,transparent 1716px 1749px,transparent 1749px 1778px,transparent 1778px 1814px,transparent 1814px 1847px,transparent 1847px 1866px,#1a0d04 1866px 1868px,#2b2b2b 1868px 1896px,#1a0d04 1896px 1898px,#1a0d04 1898px 1900px,#1f3d5c 1900px 1932px,#1a0d04 1932px 1934px);
+  background-size: 1934px 94%, 1934px 80%, 1934px 66%;
+  background-position: left bottom;
+  background-repeat: repeat-x;
+}
+
+
+/* ===== SETA PARA A PÁGINA "EXIBIÇÃO" (lado direito) ===== */
+.seta-exibicao {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 34px 14px 22px;
+    color: #3a200d;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: none;
+    background: linear-gradient(to bottom, #f3dfb6, #d9b45a);
+    /* formato de seta apontando para a direita */
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 50%, calc(100% - 22px) 100%, 0 100%, 14px 50%);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+    transform: translateY(-50%);
+    transition: padding 0.2s, background 0.2s;
+}
+
+.seta-exibicao:hover,
+.seta-exibicao:focus-visible {
+    padding-right: 48px;
+    background: linear-gradient(to bottom, #fff0c8, #e8c46a);
+    outline: none;
+}
+
+@media (max-width: 700px) {
+    .seta-exibicao { font-size: 14px; padding: 10px 26px 10px 18px; }
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aulas - Sketch2Draw</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/estilo-mesa.css"> <!-- mesa de madeira (body) -->
+    <link rel="stylesheet" href="/css/estilo-livro.css"> <!-- caderno + virada de página -->
+</head>
+
+<body>
+    <nav class="marcadores">
+        <a href="/html/index.html" class="marcador">Voltar</a>
+        <a href="../aulas/aula1.html" class="marcador">Aula 1</a>
+        <a href="../aulas/aula2.html" class="marcador">Aula 2</a>
+        <a href="../aulas/aula3.html" class="marcador">Aula 3</a>
+        <a href="../aulas/aula4.html" class="marcador">Aula 4</a>
+        <a href="../aulas/aula5.html" class="marcador">Aula 5</a>
+        <a href="../aulas/aula6.html" class="marcador">Aula 6</a>
+        <a href="/html/exibicao.html" class="marcador">exibição</a>
+    </nav>
+
+    <!-- O CADERNO (não precisa editar) -->
+    <main class="caderno" id="caderno">
+        <div class="pagina pagina-esq base base-esq">
+            <div class="conteudo" id="conteudo-esq"></div>
+        </div>
+        <div class="pagina pagina-dir base base-dir">
+            <div class="conteudo" id="conteudo-dir"></div>
+        </div>
+
+        <div class="folha-virando" id="folha" aria-hidden="true">
+            <div class="face frente pagina">
+                <div class="conteudo"></div>
+            </div>
+            <div class="face verso pagina">
+                <div class="conteudo"></div>
+            </div>
+        </div>
+
+        <button class="dobra dobra-esq" id="dobra-esq" type="button" aria-label="Página anterior"></button>
+        <button class="dobra dobra-dir" id="dobra-dir" type="button" aria-label="Próxima página"></button>
+    </main>
+
+    <!-- CONTEÚDO: cada <section class="spread"> é um par de folhas.
+         esquerda = texto, direita = imagens -->
+    <div id="fonte-spreads" hidden>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h1>Aula 1: O primeiro traço</h1>
+                <h2>Introdução</h2>
+                <p>Todo desenho começa com uma linha. Antes de criar personagens, paisagens ou objetos complexos, é
+                    importante desenvolver o controle dos movimentos que fazemos com o lápis.<br><br>
+
+                    Nesta aula, você aprenderá a produzir traços mais firmes, experimentar diferentes intensidades de
+                    pressão e desenhar linhas e curvas com maior confiança. Não se preocupe se seus primeiros resultados
+                    parecerem irregulares: a precisão é uma habilidade desenvolvida com a prática.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure>
+                    <img src="/img/a1e0.jfif" alt="Coelho">
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 1: Linhas retas e controle do movimento</h2>
+                <p>Pegue uma folha de papel e marque dois pontos separados por alguns centímetros. Tente conectá-los
+                    utilizando um único movimento contínuo, sem levantar o lápis.<br><br>
+
+                    Repita o exercício várias vezes, alterando a distância entre os pontos. Depois, experimente desenhar
+                    linhas horizontais, verticais e diagonais paralelas.<br><br>
+
+                    Para traços mais longos, procure movimentar o braço de maneira confortável, em vez de depender
+                    exclusivamente do pulso. Evite pressionar o lápis com força excessiva.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a1e1.jfif" alt="A prática">
+                    <figcaption>A prática</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 2: Curvas, círculos e movimentos circulares</h2>
+                <p>Agora, desenhe cinco círculos grandes, procurando completar cada um com um movimento contínuo.<br><br>
+
+                    Em seguida, repita o exercício com círculos menores. Experimente também fazer espirais, curvas em
+                    formato de S e linhas onduladas.<br><br>
+
+                    O objetivo não é alcançar uma forma perfeita, mas acostumar a mão a mudar de direção suavemente.
+                    Você pode repetir o movimento circular algumas vezes com o lápis próximo ao papel antes de fazer o
+                    traço definitivo.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a1e2.jfif" alt="Mais do mesmo">
+                    <figcaption>Mais do mesmo</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 3: Controlando a intensidade do traço</h2>
+                <p>Desenhe três linhas lado a lado. Na primeira, utilize pouca pressão; na segunda, uma pressão
+                    moderada; e na terceira, uma pressão um pouco maior.<br><br>
+
+                    Observe como o mesmo lápis pode produzir tonalidades diferentes. Essa habilidade será especialmente
+                    importante na criação de esboços e no sombreamento.<br><br>
+
+                    Tente também fazer uma linha que comece clara e termine escura, aumentando gradualmente a pressão.
+                </p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a1e3.jfif" alt="Controlando a intensidade">
+                    <figcaption>Controlando a intensidade</figcaption>
+                </figure>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="/java/livro.js"></script>
+</body>
+
+</html>

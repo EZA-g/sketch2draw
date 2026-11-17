@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aulas - Sketch2Draw</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/estilo-mesa.css"> <!-- mesa de madeira (body) -->
+    <link rel="stylesheet" href="/css/estilo-livro.css"> <!-- caderno + virada de página -->
+</head>
+
+<body>
+    <nav class="marcadores">
+        <a href="/html/index.html" class="marcador">Voltar</a>
+        <a href="../aulas/aula1.html" class="marcador">Aula 1</a>
+        <a href="../aulas/aula2.html" class="marcador">Aula 2</a>
+        <a href="../aulas/aula3.html" class="marcador">Aula 3</a>
+        <a href="../aulas/aula4.html" class="marcador">Aula 4</a>
+        <a href="../aulas/aula5.html" class="marcador">Aula 5</a>
+        <a href="../aulas/aula6.html" class="marcador">Aula 6</a>
+        <a href="/html/exibicao.html" class="marcador">exibição</a>
+    </nav>
+
+    <!-- O CADERNO (não precisa editar) -->
+    <main class="caderno" id="caderno">
+        <div class="pagina pagina-esq base base-esq">
+            <div class="conteudo" id="conteudo-esq"></div>
+        </div>
+        <div class="pagina pagina-dir base base-dir">
+            <div class="conteudo" id="conteudo-dir"></div>
+        </div>
+
+        <div class="folha-virando" id="folha" aria-hidden="true">
+            <div class="face frente pagina">
+                <div class="conteudo"></div>
+            </div>
+            <div class="face verso pagina">
+                <div class="conteudo"></div>
+            </div>
+        </div>
+
+        <button class="dobra dobra-esq" id="dobra-esq" type="button" aria-label="Página anterior"></button>
+        <button class="dobra dobra-dir" id="dobra-dir" type="button" aria-label="Próxima página"></button>
+    </main>
+
+    <!-- CONTEÚDO: cada <section class="spread"> é um par de folhas.
+         esquerda = texto, direita = imagens -->
+    <div id="fonte-spreads" hidden>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h1>Aula 3: Construindo objetos com esboços</h1>
+                <h2>Introdução</h2>
+                <p>Agora que você aprendeu a identificar formas geométricas, chegou o momento de utilizá-las para
+                    construir um desenho completo.<br><br>
+
+                    Nesta aula, vamos desenhar uma caneca, começando com linhas de referência e terminando com um
+                    contorno mais limpo.<br><br>
+
+                    Você também aprenderá por que os primeiros traços devem ser leves e como corrigir pequenas
+                    imperfeições durante a construção.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure>
+                    <img src="/img/a3e0.jfif" alt="Cavalo">
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 1: Criando a estrutura principal</h2>
+                <p>Comece desenhando uma linha vertical para indicar o centro da caneca.<br><br>
+
+                    Em seguida, faça uma elipse horizontal na parte superior, representando a abertura. Desenhe duas
+                    linhas descendo pelas laterais e conecte suas extremidades com uma curva suave.<br><br>
+
+                    Não se preocupe com a alça ou outros detalhes. Primeiro, precisamos estabelecer o formato principal
+                    do objeto.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a3e1.jfif" alt="Formando a estrutura">
+                    <figcaption>Formando a estrutura</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 2: Acrescentando a alça e ajustando a estrutura</h2>
+                <p>Depois de estabelecer o corpo, desenhe uma curva na lateral da caneca para representar a parte
+                    externa da alça.<br><br>
+
+                    Faça outra curva menor em seu interior, mantendo uma distância razoavelmente uniforme entre as duas
+                    linhas.<br><br>
+
+                    Observe como a alça se conecta ao corpo e verifique se seu tamanho parece adequado.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a3e2.jfif" alt="Acrescentando a alça">
+                    <figcaption>Acrescentando a alça</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 3: Refinando os contornos</h2>
+                <p>Com a estrutura completa, comece a reforçar as linhas que realmente fazem parte do objeto.<br><br>
+
+                    Utilize traços mais definidos para destacar as bordas da caneca e sua alça. Depois, apague
+                    cuidadosamente as linhas de construção desnecessárias.<br><br>
+
+                    Evite apagar todas as referências antes de finalizar o contorno, pois elas ainda podem ajudar na
+                    correção das proporções.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a3e3.jfif" alt="Refinando os contornos">
+                    <figcaption>Refinando os contornos</figcaption>
+                </figure>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="/java/livro.js"></script>
+</body>
+
+</html>

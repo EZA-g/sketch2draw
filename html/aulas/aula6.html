@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aulas - Sketch2Draw</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/estilo-mesa.css"> <!-- mesa de madeira (body) -->
+    <link rel="stylesheet" href="/css/estilo-livro.css"> <!-- caderno + virada de página -->
+</head>
+
+<body>
+    <nav class="marcadores">
+        <a href="/html/index.html" class="marcador">Voltar</a>
+        <a href="../aulas/aula1.html" class="marcador">Aula 1</a>
+        <a href="../aulas/aula2.html" class="marcador">Aula 2</a>
+        <a href="../aulas/aula3.html" class="marcador">Aula 3</a>
+        <a href="../aulas/aula4.html" class="marcador">Aula 4</a>
+        <a href="../aulas/aula5.html" class="marcador">Aula 5</a>
+        <a href="../aulas/aula6.html" class="marcador">Aula 6</a>
+        <a href="/html/exibicao.html" class="marcador">exibição</a>
+    </nav>
+
+    <!-- O CADERNO (não precisa editar) -->
+    <main class="caderno" id="caderno">
+        <div class="pagina pagina-esq base base-esq">
+            <div class="conteudo" id="conteudo-esq"></div>
+        </div>
+        <div class="pagina pagina-dir base base-dir">
+            <div class="conteudo" id="conteudo-dir"></div>
+        </div>
+
+        <div class="folha-virando" id="folha" aria-hidden="true">
+            <div class="face frente pagina">
+                <div class="conteudo"></div>
+            </div>
+            <div class="face verso pagina">
+                <div class="conteudo"></div>
+            </div>
+        </div>
+
+        <button class="dobra dobra-esq" id="dobra-esq" type="button" aria-label="Página anterior"></button>
+        <button class="dobra dobra-dir" id="dobra-dir" type="button" aria-label="Próxima página"></button>
+    </main>
+
+    <!-- CONTEÚDO: cada <section class="spread"> é um par de folhas.
+         esquerda = texto, direita = imagens -->
+    <div id="fonte-spreads" hidden>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h1>Aula 6 — Luz e sombra: dando vida ao desenho</h1>
+                <h2>Introdução</h2>
+                <p>Um desenho pode possuir bons contornos e proporções, mas ainda parecer plano. Isso acontece porque o
+                    volume dos objetos não depende apenas de sua estrutura: a iluminação também influencia nossa
+                    percepção.<br><br>
+
+                    A luz revela as superfícies, enquanto as sombras ajudam a compreender suas curvas, posições e
+                    profundidades.<br><br>
+
+                    Nesta aula, aprenderemos a controlar diferentes tonalidades de grafite e aplicar um sombreamento
+                    simples em uma esfera.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure>
+                    <img src="/img/a6e0.jpg" alt="Elefante">
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 1: Criando uma escala de tonalidades</h2>
+                <p>Desenhe cinco quadrados de tamanhos semelhantes, organizados horizontalmente.<br><br>
+
+                    Deixe o primeiro completamente branco. No segundo, aplique uma camada muito leve de grafite.
+                    Continue escurecendo progressivamente os demais quadrados até que o último apresente a tonalidade
+                    mais escura que você conseguir produzir confortavelmente.<br><br>
+
+                    Procure preencher cada quadrado de maneira uniforme, evitando deixar marcas muito evidentes entre os
+                    movimentos.<br><br>
+
+                    Esse exercício ajudará você a compreender como a pressão e a sobreposição de camadas influenciam a
+                    intensidade do grafite.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a6e1.jfif" alt="Cubo">
+                    <figcaption>A escala</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 2: Identificando a direção da luz</h2>
+                <p>Imagine uma esfera sobre uma mesa, iluminada por uma lâmpada posicionada acima e à esquerda.<br><br>
+
+                    A região voltada para a fonte de luz será mais clara, enquanto a parte oposta apresentará
+                    tonalidades mais escuras.<br><br>
+
+                    Além disso, a esfera bloqueará parte da iluminação, criando uma sombra sobre a mesa. Essa região é
+                    conhecida como sombra projetada.<br><br>
+
+                    Antes de sombrear, procure identificar três elementos: a área iluminada, a região de sombra no
+                    próprio objeto e a sombra projetada na superfície.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a6e2.jfif" alt="Identificando a direção da luz">
+                    <figcaption>A direção da luz</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 3: Aplicando sombras na esfera</h2>
+                <p>Desenhe um círculo grande no centro da folha.<br><br>
+
+                    Imagine que a luz vem do canto superior esquerdo e comece a aplicar grafite suavemente na região
+                    inferior direita.<br><br>
+
+                    Aumente a intensidade aos poucos, criando uma transição gradual entre as partes claras e
+                    escuras.<br><br>
+
+                    Evite escurecer toda a esfera uniformemente. Reserve uma pequena região clara para representar a
+                    área que recebe mais iluminação.<br><br>
+
+                    Lembre-se de que o sombreamento deve acompanhar a forma do objeto, ajudando a transmitir sua
+                    superfície arredondada.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a6e3.jfif" alt="Aplicando sombras na esfera">
+                    <figcaption>Aplicando as sombras</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 4 — Acrescentando a sombra projetada</h2>
+                <p>Depois de sombrear a esfera, desenhe uma sombra sobre a superfície abaixo dela, deslocada para o lado
+                    oposto à fonte de luz.<br><br>
+
+                    Escureça a região próxima ao ponto de contato entre a esfera e a mesa. Conforme a sombra se afasta,
+                    você pode suavizar suas bordas, considerando uma fonte de luz relativamente ampla.<br><br>
+
+                    Observe como essa sombra ajuda a indicar que a esfera está apoiada sobre uma superfície, em vez de
+                    parecer suspensa no ar.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a6e4.jfif" alt="Acrescentando a sombra projetada">
+                    <figcaption>Finalizando o sombreamento</figcaption>
+                </figure>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="/java/livro.js"></script>
+</body>
+
+</html>

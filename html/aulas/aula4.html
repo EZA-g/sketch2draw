@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aulas - Sketch2Draw</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/estilo-mesa.css"> <!-- mesa de madeira (body) -->
+    <link rel="stylesheet" href="/css/estilo-livro.css"> <!-- caderno + virada de página -->
+</head>
+
+<body>
+    <nav class="marcadores">
+        <a href="/html/index.html" class="marcador">Voltar</a>
+        <a href="../aulas/aula1.html" class="marcador">Aula 1</a>
+        <a href="../aulas/aula2.html" class="marcador">Aula 2</a>
+        <a href="../aulas/aula3.html" class="marcador">Aula 3</a>
+        <a href="../aulas/aula4.html" class="marcador">Aula 4</a>
+        <a href="../aulas/aula5.html" class="marcador">Aula 5</a>
+        <a href="../aulas/aula6.html" class="marcador">Aula 6</a>
+        <a href="/html/exibicao.html" class="marcador">exibição</a>
+    </nav>
+
+    <!-- O CADERNO (não precisa editar) -->
+    <main class="caderno" id="caderno">
+        <div class="pagina pagina-esq base base-esq">
+            <div class="conteudo" id="conteudo-esq"></div>
+        </div>
+        <div class="pagina pagina-dir base base-dir">
+            <div class="conteudo" id="conteudo-dir"></div>
+        </div>
+
+        <div class="folha-virando" id="folha" aria-hidden="true">
+            <div class="face frente pagina">
+                <div class="conteudo"></div>
+            </div>
+            <div class="face verso pagina">
+                <div class="conteudo"></div>
+            </div>
+        </div>
+
+        <button class="dobra dobra-esq" id="dobra-esq" type="button" aria-label="Página anterior"></button>
+        <button class="dobra dobra-dir" id="dobra-dir" type="button" aria-label="Próxima página"></button>
+    </main>
+
+    <!-- CONTEÚDO: cada <section class="spread"> é um par de folhas.
+         esquerda = texto, direita = imagens -->
+    <div id="fonte-spreads" hidden>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h1>Aula 4: Proporções: acertando as medidas</h1>
+                <h2>Introdução</h2>
+                <p>Você já tentou desenhar um objeto e percebeu que alguma parte ficou grande ou pequena demais? Isso
+                    acontece porque, além de reconhecer formas, precisamos compreender como seus tamanhos se
+                    relacionam.<br><br>
+
+                    Essa relação é chamada de proporção. Ela nos ajuda a representar objetos de maneira mais
+                    equilibrada, mantendo a relação entre altura, largura e posicionamento de cada parte.<br><br>
+
+                    Nesta aula, aprenderemos a observar essas medidas utilizando uma garrafa como referência.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure>
+                    <img src="/img/a4e0.jfif" alt="Coruja">
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 1: Comparando altura e largura</h2>
+                <p>Escolha uma garrafa e coloque-a sobre uma superfície estável.<br><br>
+
+                    Observe sua altura total e compare-a com sua largura. Procure perceber quantas vezes a largura da
+                    garrafa caberia aproximadamente em sua altura.<br><br>
+
+                    No papel, desenhe um retângulo leve que represente o espaço ocupado pelo objeto. Esse retângulo
+                    funcionará como um limite para o desenho, evitando que ele fique exageradamente largo ou estreito
+                </p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a4e1.jfif" alt="Comparação">
+                    <figcaption>Comparação</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 2: Medindo com o lápis</h2>
+                <p>Uma técnica bastante utilizada no desenho de observação consiste em usar o próprio lápis como
+                    instrumento de comparação.<br><br>
+
+                    Segure o lápis à frente do corpo, com o braço estendido e um olho fechado. Alinhe sua ponta com a
+                    parte superior do objeto e utilize o polegar para marcar uma medida.<br><br>
+
+                    Sem alterar a posição do braço, compare essa medida com outras partes do objeto.<br><br>
+
+                    Isso ajudará você a identificar relações de tamanho sem depender apenas da memória visual.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a4e2.jfif" alt="Medindo com o lápis">
+                    <figcaption>Medindo com o lápis</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="spread">
+            <div class="conteudo-esq">
+                <h2>Etapa 3: Organizando as partes do objeto</h2>
+                <p>Retorne ao esboço da garrafa e identifique onde começam e terminam suas partes principais.<br><br>
+
+                    Marque levemente a posição do fundo, dos ombros, do pescoço e da tampa. Utilize linhas horizontais
+                    de referência para comparar essas divisões.<br><br>
+
+                    Depois, conecte os pontos para construir o contorno. Antes de finalizar, observe novamente a garrafa
+                    e corrija qualquer diferença muito evidente.</p>
+            </div>
+            <div class="conteudo-dir">
+                <figure><img src="/img/a4e3.jfif" alt="Organizando as partes">
+                    <figcaption>Organizando as partes</figcaption>
+                </figure>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="/java/livro.js"></script>
+</body>
+
+</html>
